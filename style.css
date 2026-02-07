@@ -1,0 +1,72 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 4px solid #d4af37; /* Gold */
+}
+
+header h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 1.1em;
+    color: #d4af37;
+}
+
+/* MAIN CONTENT */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 2px solid #d4af37; /* Gold outline */
+}
+
+/* HEADINGS */
+h2 {
+    border-left: 5px solid #d4af37;
+    padding-left: 10px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+/* ABOUT SECTION */
+.about p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+/* IMAGE SECTION */
+.images {
+    margin-top: 40px;
+}
+
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.image-gallery img {
+    width: 280px;
+    border: 3px solid #d4af37; /* Gold outline */
+    bo
