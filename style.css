@@ -1,72 +1,93 @@
-/* RESET */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
+/* Body */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #000;
+    color: #fff;
     line-height: 1.6;
 }
 
-/* HEADER */
+/* Header */
 header {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 30px 20px;
     text-align: center;
-    border-bottom: 4px solid #d4af37; /* Gold */
+    padding: 25px;
+    border-bottom: 3px solid gold;
+}
+
+header img {
+    max-width: 180px;
+    border: 3px solid gold;
+    padding: 6px;
+    margin-bottom: 10px;
 }
 
 header h1 {
-    font-size: 2.5em;
-    letter-spacing: 2px;
-}
-
-header p {
+    color: gold;
     margin-top: 10px;
-    font-size: 1.1em;
-    color: #d4af37;
 }
 
-/* MAIN CONTENT */
-main {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 30px;
-    border: 2px solid #d4af37; /* Gold outline */
+/* Sections */
+section {
+    margin: 30px;
+    padding: 25px;
+    border: 2px solid gold;
+    background-color: #111;
 }
 
-/* HEADINGS */
 h2 {
-    border-left: 5px solid #d4af37;
-    padding-left: 10px;
+    color: gold;
     margin-bottom: 15px;
-    color: #000000;
 }
 
-/* ABOUT SECTION */
-.about p {
-    margin-bottom: 15px;
-    font-size: 1.05em;
-}
-
-/* IMAGE SECTION */
-.images {
-    margin-top: 40px;
-}
-
-.image-gallery {
+/* Gallery */
+.gallery {
     display: flex;
+    gap: 15px;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
-.image-gallery img {
-    width: 280px;
-    border: 3px solid #d4af37; /* Gold outline */
-    bo
+.gallery img {
+    width: 250px;
+    height: 170px;
+    object-fit: cover;
+    border: 2px solid gold;
+}
+
+/* Contact links */
+a {
+    color: gold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    border-top: 3px solid gold;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+    section {
+        margin: 15px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: auto;
+    }
+}
+
