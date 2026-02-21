@@ -1,60 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>K&S Property Maintenance</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>K&S Property Maintenances</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+<style>
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    border-bottom: 3px solid gold;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px;
+    border-bottom: 2px solid gold;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 2px solid gold;
+}
+
+nav a:hover {
+    background-color: gold;
+    color: white;
+}
+
+section {
+    padding: 40px;
+    border-bottom: 2px solid gold;
+}
+
+h2 {
+    border-bottom: 2px solid gold;
+    padding-bottom: 10px;
+}
+
+.button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: 2px solid gold;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: gold;
+    color: white;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    border: 2px solid gold;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid gold;
+}
+
+form button {
+    padding: 10px 20px;
+    border: 2px solid gold;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: gold;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid gold;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <!-- LOGO -->
-    <img src="logo.png" alt="K&S Property Maintenance Logo">
-    <h1>K&S Property Maintenance</h1>
+    <h1>K&S Property Maintenances</h1>
 </header>
 
-<section>
-    <h2>About Us</h2>
-    <p>
-        I am a local man who's trying to make an honest living.
-        I do all type of work, home to garden.
-        <br><br>
-        Owner and CEO at K&S Property Maintenance, serving the Wrexham area.
-    </p>
+<nav>
+    <a href="#book">Book a Appointment</a>
+    <a href="#photos">Photos</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#whatwedo">What We Do</a>
+</nav>
+
+<section id="book">
+    <h2>Book a Appointment</h2>
+    <p>Choose how you would like to contact us:</p>
+
+    <a class="button" href="mailto:property444@gmail.com">Book via Email</a><br>
+
+    <a class="button" href="https://facebook.com/people/Mason-Kearsley/pfbid02Wdp8qFWY62Kr2tLzqpqXZVmqLhiQwy79VbBwkrXj4sk7Dak7VnqgaWrQLv65pGi4l/" target="_blank">
+        Book via Facebook
+    </a>
 </section>
 
-<section>
+<section id="photos">
     <h2>Our Work</h2>
     <div class="gallery">
-        <img src="photo1.jpg" alt="Work photo 1">
-        <img src="photo2.jpg" alt="Work photo 2">
-        <img src="photo3.jpg" alt="Work photo 3">
-        <img src="photo4.jpg" alt="Work photo 4">
-        <img src="photo5.jpg" alt="Work photo 5">
-        <img src="photo6.jpg" alt="Work photo 6">
-        <img src="photo7.jpg" alt="Work photo 7">
-        <img src="photo8.jpg" alt="Work photo 8">
-        <img src="photo9.jpg" alt="Work photo 9">
-        <img src="photo10.jpg" alt="Work photo 10">
-        
+        <img src="photo1.jpg" alt="Work 1">
+        <img src="photo2.jpg" alt="Work 2">
+        <img src="photo3.jpg" alt="Work 3">
+        <img src="photo4.jpg" alt="Work 4">
+        <img src="photo5.jpg" alt="Work 5">
+        <img src="photo6.jpg" alt="Work 6">
+        <img src="photo7.jpg" alt="Work 7">
+        <img src="photo8.jpg" alt="Work 8">
+        <img src="photo9.jpg" alt="Work 9">
+        <img src="photo10.jpg" alt="Work 10">
     </div>
 </section>
 
-<section>
-    <h2>Contact</h2>
+<section id="about">
+    <h2>About</h2>
+    <p>I am a man from Wrexham who is making a honest living.</p>
+</section>
+
+<section id="reviews">
+<section id="reviews">
+    <h2>Leave a Review</h2>
+
+    <form action="reviews.php" method="POST" enctype="multipart/form-data">
+        <label>Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Upload Photo (optional):</label>
+        <input type="file" name="photo" accept="image/*">
+
+        <label>Star Rating (out of 5):</label>
+        <select name="rating" required>
+            <option value="">Select</option>
+            <option value="1">1 ⭐</option>
+            <option value="2">2 ⭐⭐</option>
+            <option value="3">3 ⭐⭐⭐</option>
+            <option value="4">4 ⭐⭐⭐⭐</option>
+            <option value="5">5 ⭐⭐⭐⭐⭐</option>
+        </select>
+
+        <label>Why? (Optional)</label>
+        <textarea name="reason"></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+    <h2>Customer Reviews</h2>
+
+    <?php if (!empty($reviews)): ?>
+        <?php foreach ($reviews as $review): ?>
+            <div style="border:2px solid gold; padding:15px; margin-bottom:15px;">
+                <strong><?php echo $review["name"]; ?></strong><br>
+                Rating: <?php echo $review["rating"]; ?> ⭐<br>
+                <p><?php echo $review["reason"]; ?></p>
+                <?php if (!empty($review["photo"])): ?>
+                    <img src="<?php echo $review["photo"]; ?>" width="200">
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+</section>
+
+<section id="whatwedo">
+    <h2>What We Do</h2>
     <p>
-        <strong>Phone:</strong> 07793 764140<br>
-        <strong>Facebook:</strong> Mason Kearsley
+        We do property maintenance, including painting, decorating, and gardens.  
+        We DO NOT do plumbing or anything like that, but we can get someone who does to help you.
     </p>
+
+    <h3>Contact Us</h3>
+    <p>Email: property444@gmail.com</p>
+    <p>Facebook: Mason Kearley</p>
+    <p>Phone: +44 7793 764140</p>
 </section>
 
 <footer>
-    © 2026 K&S Property Maintenance
+    <p>© 2026 K&S Property Maintenances. All Rights Reserved.</p>
 </footer>
 
 </body>
 </html>
-
