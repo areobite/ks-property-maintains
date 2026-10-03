@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Read customer reviews for K&S Property Maintenance.">
+  <title>Customer reviews | K&amp;S Property Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--ink:#202921;--muted:#68736b;--green:#284c3b;--paper:#f5f3ed;--white:#fffefa;--line:#dedfd6;--sans:'DM Sans',Arial,sans-serif;--display:Manrope,'DM Sans',Arial,sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}.wrap{width:min(900px,calc(100% - 40px));margin:auto}.top{border-bottom:1px solid var(--line);padding:20px 0}.top a{font-weight:700;color:var(--green)}main{padding:70px 0}.eyebrow{color:#607353;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700}h1{font:600 clamp(38px,6vw,60px)/1.05 var(--display);letter-spacing:-2px;margin:14px 0}.summary{color:var(--muted);margin:0 0 34px}.rating{display:inline-flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin-bottom:25px}.stars{color:#ad9b3e;letter-spacing:2px}.rating strong{font-size:20px}.rating small{color:var(--muted)}.list{display:grid;gap:13px}.card{background:var(--white);border:1px solid #e4e5dd;border-radius:13px;padding:20px}.card-stars{color:#ad9b3e;letter-spacing:2px}.card p{font:17px/1.6 Georgia,serif;margin:12px 0}.card small{color:var(--muted)}.empty{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:24px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a href="index.html">← K&amp;S Property Maintenance</a></div></header>
+  <main class="wrap">
+    <span class="eyebrow">Customer feedback</span>
+    <h1>Reviews from our customers</h1>
+    <p class="summary">Read experiences shared by people who have worked with K&amp;S Property Maintenance.</p>
+    <div class="rating" aria-live="polite"><span class="stars" id="stars" aria-hidden="true">☆☆☆☆☆</span><strong id="average">—</strong><small id="count">Loading reviews…</small></div>
+    <div class="list" id="reviews" aria-live="polite"></div>
+  </main>
+  <script>
+    (async()=>{
+      const list=document.getElementById('reviews');
+      const averageLabel=document.getElementById('average');
+      const countLabel=document.getElementById('count');
+      const starsLabel=document.getElementById('stars');
+      async function loadReviews(url){
+        const response=await fetch(url,{cache:'no-store'});
+        if(!response.ok)throw new Error(`Could not load ${url}`);
+        const reviews=await response.json();
+        if(!Array.isArray(reviews))throw new Error('Review data is invalid');
+        return reviews.filter(r=>r&&typeof r.name==='string'&&typeof r.text==='string'&&Number.isInteger(r.rating)&&r.rating>=1&&r.rating<=5);
+      }
+      let reviews;
+      try{reviews=await loadReviews('api/reviews')}
+      catch{
+        // On static hosting there is no API; use the published reviews.json file instead.
+        try{reviews=await loadReviews('reviews.json')}
+        catch{averageLabel.textContent='Unavailable';countLabel.textContent='Reviews could not be loaded. Please refresh and try again.';return}
+      }
+      const average=reviews.length?reviews.reduce((sum,r)=>sum+r.rating,0)/reviews.length:0;
+      averageLabel.textContent=reviews.length?`${average.toFixed(1)}/5`:'No ratings yet';
+      countLabel.textContent=`${reviews.length} ${reviews.length===1?'review':'reviews'}`;
+      starsLabel.textContent='★'.repeat(Math.round(average))+'☆'.repeat(5-Math.round(average));
+      if(!reviews.length){const empty=document.createElement('p');empty.className='empty';empty.textContent='No reviews yet. Be the first to share your experience.';list.append(empty);return}
+      reviews.slice().reverse().forEach(r=>{const card=document.createElement('article');card.className='card';const stars=document.createElement('div');stars.className='card-stars';stars.textContent='★'.repeat(r.rating)+'☆'.repeat(5-r.rating);const text=document.createElement('p');text.textContent='“'+r.text+'”';const name=document.createElement('small');name.textContent='— '+r.name;card.append(stars,text,name);if(r.response){const reply=document.createElement('p');reply.className='owner-response';reply.textContent='K&S reply: '+r.response;card.append(reply)}list.append(card)})
+    })();
+  </script>
+</body>
+</html>
